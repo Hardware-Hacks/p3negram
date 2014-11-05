@@ -1460,7 +1460,12 @@ void print_user_list_gw (struct tgl_state *TLSR, void *extra, int success, int n
   mprint_start (ev);
   int i;
   for (i = num - 1; i >= 0; i--) {
+
+    mprintf (ev, "User #%d: ", tgl_get_peer_id (UL[i]->id));
     print_user_name (ev, UL[i]->id, (void *)UL[i]);
+    mprintf(ev, " (");
+    print_user_name (ev, UL[i]->id, (void *)UL[i]);
+    mprintf (ev, " %s)", UL[i]->phone);
     mprintf (ev, "\n");
   }
   mprint_end (ev);
